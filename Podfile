@@ -4,6 +4,7 @@ use_frameworks!
 target 'iStackOS' do
 
 pod 'Alamofire'
+pod 'HanekeSwift'
 
 end
 
