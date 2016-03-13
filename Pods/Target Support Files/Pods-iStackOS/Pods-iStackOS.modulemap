@@ -1,0 +1,6 @@
+framework module Pods_iStackOS {
+  umbrella header "Pods-iStackOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
