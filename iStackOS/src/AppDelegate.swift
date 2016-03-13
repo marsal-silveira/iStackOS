@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  iStackOS
 //
-//  Created by Domsys on 12/03/16.
+//  Created by Marsal on 12/03/16.
 //  Copyright © 2016 Marsal Silveira. All rights reserved.
 //
 
@@ -10,10 +10,26 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate
+{
+    // ****************************** //
+    // MARK: Properties
+    // ****************************** //
 
     var window: UIWindow?
+    
+    // ****************************** //
+    // MARK: Singleton
+    // ****************************** //
 
+    class func shareInstance() -> AppDelegate
+    {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
+
+    // ****************************** //
+    // MARK: UIApplicationDelegate
+    // ****************************** //
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -43,8 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-
-    // MARK: - Core Data stack
+    
+    // ****************************** //
+    // MARK: Core Data stack
+    // ****************************** //
 
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "br.com.marsal.silveira.iStackOS" in the application's documents Application Support directory.
@@ -90,8 +108,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
-
-    // MARK: - Core Data Saving support
+    
+    // ****************************** //
+    // MARK: Core Data Saving support
+    // ****************************** //
 
     func saveContext () {
         if managedObjectContext.hasChanges {

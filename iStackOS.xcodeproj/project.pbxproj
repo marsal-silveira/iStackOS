@@ -162,8 +162,8 @@
 		5E95FB511C95043A0014823C /* Story Boards */ = {
 			isa = PBXGroup;
 			children = (
-				5E95FB3E1C95040B0014823C /* LaunchScreen.storyboard */,
 				5E95FB401C95040B0014823C /* Main.storyboard */,
+				5E95FB3E1C95040B0014823C /* LaunchScreen.storyboard */,
 			);
 			name = "Story Boards";
 			sourceTree = "<group>";
