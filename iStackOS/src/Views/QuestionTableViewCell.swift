@@ -23,7 +23,6 @@ class QuestionTableViewCell: UITableViewCell
     @IBOutlet private weak var _lblCreationDate: UILabel!
     @IBOutlet private weak var _imgUserAvatar: UIImageView!
     @IBOutlet private weak var _lblUserDisplay: UILabel!
-    @IBOutlet private weak var _lblUserReputation: UILabel!
 
     // *********************************** //
     // MARK: Load
@@ -40,7 +39,6 @@ class QuestionTableViewCell: UITableViewCell
         _lblCreationDate.text = ""
         _imgUserAvatar.image = UIImage(imageLiteral: "default-avatar")
         _lblUserDisplay.text = ""
-        _lblUserReputation.text = ""
     }
 
     func configureCellWithQuestion(question: Question)
@@ -54,7 +52,6 @@ class QuestionTableViewCell: UITableViewCell
         _lblCreationDate.text = self.decodeCreationDate(question.creationDate)
         _imgUserAvatar.hnk_setImageFromURL(question.owner.avatarURL)
         _lblUserDisplay.text = question.owner.displayName
-        _lblUserReputation.text = "\(question.owner.reputation)"
     }
     
     private func decodeCreationDate(creationDate: NSDate) -> String?
@@ -76,14 +73,16 @@ class QuestionTableViewCell: UITableViewCell
             
             //
             var period = 0
+            var periodStr: String! = nil
             if (creationHour != currentHour) {
                 period = currentHour-creationHour
-                result = String.localizedStringWithFormat(NSLocalizedString("[Asked Today]", comment: ""), [period, period == 1 ? "[hour]" : "[hours]"])
+                periodStr = "\(period) \(period == 1 ? NSLocalizedString("[hour]", comment: "") : NSLocalizedString("[hours]", comment: ""))"
             }
             else {
                 period = currentMinute-creationMinute
-                result = String.localizedStringWithFormat(NSLocalizedString("[Asked Today]", comment: ""), [period, period == 1 ? "[minute]" : "[minutes]"])
+                periodStr = "\(period) \(period == 1 ? NSLocalizedString("[minute]", comment: "") : NSLocalizedString("[minutes]", comment: ""))"
             }
+            result = String.localizedStringWithFormat(NSLocalizedString("[Asked Today]", comment: ""), periodStr)
         }
         // if asked yesterday = "Asked yesterday at hh:mm:ss"
         else if (creationDate.dateToString() == self.getYesterday().dateToString()) {
@@ -91,11 +90,10 @@ class QuestionTableViewCell: UITableViewCell
         }
         // otherwise = "Asked at dd de MMMM de yyyy"
         else {
-//            let day = creationDate.dayToString()
-//            let month = self.translateMonth(Int(creationDate.monthNumberToString())!)
-//            let year = creationDate.yearToString()
-//            result = "\(day) de \(month) de \(year)"
-            result = String.localizedStringWithFormat(NSLocalizedString("[Asked Month]", comment: ""), [creationDate.dateToString(),creationDate.timeToString()])
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = NSDateFormatterStyle.MediumStyle
+            formatter.timeStyle = NSDateFormatterStyle.ShortStyle
+            result = String.localizedStringWithFormat(NSLocalizedString("[Asked Month]", comment: ""), formatter.stringFromDate(creationDate))
         }
         return result;
     }
@@ -109,51 +107,6 @@ class QuestionTableViewCell: UITableViewCell
         // create a calendar and return yesterday NSDate value
         let gregorian = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         return (gregorian?.dateByAddingComponents(components, toDate: now, options:NSCalendarOptions(rawValue: 0)))!
-    }
-
-    func translateMonth(month: Int) -> String
-    {
-        var result: String! = nil;
-        if (month == 1) {
-            result = "Janeiro";
-        }
-        else if (month == 2) {
-            result = "Fevereiro";
-        }
-        else if (month == 3) {
-            result = "Março";
-        }
-        else if (month == 4) {
-            result = "Abril";
-        }
-        else if (month == 5) {
-            result = "Maio";
-        }
-        else if (month == 6) {
-            result = "Junho";
-        }
-        else if (month == 7) {
-            result = "Julho";
-        }
-        else if (month == 8) {
-            result = "Agosto";
-        }
-        else if (month == 9) {
-            result = "Setembro";
-        }
-        else if (month == 10) {
-            result = "Outubro";
-        }
-        else if (month == 11) {
-            result = "Novembro";
-        }
-        else if (month == 12) {
-            result = "Dezembro";
-        }
-        else {
-            NSException(name: "translateMonthError", reason: "Invalid month int value: \(month)", userInfo: nil).raise()
-        }
-        return result;
     }
 
 }

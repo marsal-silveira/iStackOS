@@ -67,31 +67,63 @@ class QuestionsTabViewController: UITableViewController {
     }
     
     // ********************************** //
+    // MARK: @IBOutlet
+    // ********************************** //
+
+    @IBOutlet weak var btnRefresh: UIBarButtonItem!
+    
+    // ********************************** //
+    // MARK: @IBAction
+    // ********************************** //
+    
+    @IBAction func btnRefreshTap(sender: UIBarButtonItem)
+    {
+        self.loadData()
+    }
+
+    // ********************************** //
     // MARK: Load Data
     // ********************************** //
     
     private func loadData()
     {
-        // get tag filter using parentViewController... Each view controller is associated to one tag filter value...
-        if let restorationIdentifier = self.parentViewController?.restorationIdentifier, let tagFilter = StackOverflowTag(rawValue: restorationIdentifier) {
-            
-            DataSource.sharedInstance().loadDataWithTag(tagFilter,  successBlock: {
-                questions in
+        
+        // only continue if device has network connection...
+        if (isConnectedToNetwork()) {
 
-                // update questions internal list and refresh data
-                self._questions = questions
-                self.tableView.reloadData()
-                },
-                failureBlock: {
-                    errro in
+            // get tag filter using parentViewController... Each view controller is associated to one tag filter value...
+            if let restorationIdentifier = self.parentViewController?.restorationIdentifier, let tagFilter = StackOverflowTag(rawValue: restorationIdentifier) {
+                
+                // disable refresh button to avoid exec more than one refresh process...
+                btnRefresh.enabled = false
+                
+                DataSource.sharedInstance().loadDataWithTag(tagFilter,  successBlock: {
+                    questions in
                     
-                    // TODO: check error type to handle it accordlly
-                    self._questions = []
-            })
+                    // update questions internal list and refresh data
+                    self._questions = questions
+                    self.tableView.reloadData()
+                    
+                    // enabled refresh button again...
+                    self.btnRefresh.enabled = true
+                    },
+                    failureBlock: {
+                        errro in
+                        
+                        // TODO: check error type to handle it accordlly
+                        self._questions = []
+                        
+                        // enabled refresh button again...
+                        self.btnRefresh.enabled = true
+                })
+            }
+            else {
+                let tagValue = self.parentViewController?.restorationIdentifier
+                showSimpleAlertWithTitle("Opps!", message: String.localizedStringWithFormat(NSLocalizedString("[Invalid Tag]", comment: ""), tagValue!), viewController: self)
+            }
         }
         else {
-            let tagValue = self.parentViewController?.restorationIdentifier
-            showSimpleAlertWithTitle("Opps", message: String.localizedStringWithFormat(NSLocalizedString("[Invalid Tag]", comment: ""), tagValue!), viewController: self)
+            showSimpleAlertWithTitle("Opps!", message: NSLocalizedString("[Internet Connection Not Found]", comment: ""), viewController: self)
         }
     }
     

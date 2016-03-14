@@ -8,16 +8,19 @@
 
 /// Localized strings from Portuguese(Brazil) Language
 
-"[OK]" = "Fechar";
+"[OK]" = "OK";
 "[Cancel]" = "Cancelar";
 "[Yes]" = "Sim";
 "[No]" = "Não";
+"[Close]" = "Fechar";
 
 "[Invalid Tag]" = "Tag '%@' é inválida.";
+"[Internet Connection Not Found]" = "Nenhuma conexão à Internet encontrada.";
 
-"[Asked Today]" = "perguntada %@ %@ atrás";
+"[Asked Today]" = "perguntada %@ atrás";
 "[Asked Yesterday]" = "perguntada ontem as %@";
-"[Asked Month]" = "perguntada %@ as %@";
+"[Asked Month]" = "perguntada %@";
+"[at]" = "às";
 
 "[hour]" = "hora";
 "[hours]" = "horas";

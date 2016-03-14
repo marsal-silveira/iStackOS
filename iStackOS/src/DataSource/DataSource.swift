@@ -47,7 +47,7 @@ final class DataSource
     
     // params with default value
     private static let PARAM_page_size = 20
-    private static let PARAM_page = 1
+    private static let PARAM_page = 50
     private static let PARAM_order = "desc"
     private static let PARAM_sort = "creation"
     private static let PARAM_site = "stackoverflow"

@@ -24,6 +24,7 @@
 		5E95FB711C9656590014823C /* NSDate+iStackOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB701C9656590014823C /* NSDate+iStackOS.m */; };
 		5E95FB7F1C96659B0014823C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E95FB811C96659B0014823C /* Localizable.strings */; };
 		6D742380FA562BB08D298172 /* Pods_iStackOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C5F95C0CC63886A099760B /* Pods_iStackOS.framework */; };
+		8BF99D231C9720CA00274FDC /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF99D221C9720CA00274FDC /* NetworkUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		5E95FB751C9664900014823C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		5E95FB801C96659B0014823C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E95FB821C9665A80014823C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		8BF99D221C9720CA00274FDC /* NetworkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
 		ED15EF6A02DB5E7BD2AB3287 /* Pods-iStackOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iStackOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-iStackOS/Pods-iStackOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +208,7 @@
 		5E95FB551C95BB150014823C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8BF99D221C9720CA00274FDC /* NetworkUtils.swift */,
 				5E95FB5F1C95C3860014823C /* Logger.swift */,
 				5E95FB601C95C3860014823C /* Utils.swift */,
 			);
@@ -453,6 +456,7 @@
 				5E95FB691C95E50B0014823C /* Question.swift in Sources */,
 				5E95FB651C95C7320014823C /* DataSource.swift in Sources */,
 				5E95FB611C95C3860014823C /* Logger.swift in Sources */,
+				8BF99D231C9720CA00274FDC /* NetworkUtils.swift in Sources */,
 				5E95FB4F1C95040B0014823C /* AppDelegate.swift in Sources */,
 				5E95FB4E1C95040B0014823C /* iStackOS.xcdatamodeld in Sources */,
 				5E95FB6A1C95E50B0014823C /* User.swift in Sources */,

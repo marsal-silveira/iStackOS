@@ -12,12 +12,15 @@
 "[Cancel]" = "Cancel";
 "[Yes]" = "Yes";
 "[No]" = "No";
+"[Close]" = "Close";
 
-"[Invalid Tag]" = "Tag value '%@' is invalid.";
+"[Invalid Tag]" = "Tag '%@' is invalid.";
+"[Internet Connection Not Found]" = "Internet connection not found.";
 
-"[Asked Today]" = "asked %@ %@ ago";
+"[Asked Today]" = "asked %@ ago";
 "[Asked Yesterday]" = "asked yesterday at %@";
-"[Asked Month]" = "asked %@ at %@";
+"[Asked Month]" = "asked %@";
+"[at]" = "at";
 
 "[hour]" = "hour";
 "[hours]" = "hours";

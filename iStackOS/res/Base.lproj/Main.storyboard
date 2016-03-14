@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ERY-pu-oQA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ERY-pu-oQA">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -60,12 +60,6 @@
                                             <color key="textColor" red="0.3301497055" green="0.3301497055" blue="0.3301497055" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lblUserReputation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2m1-Yj-dTK">
-                                            <rect key="frame" x="111" y="86" width="176" height="15"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="0.3301497055" green="0.3301497055" blue="0.3301497055" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lblCreationDate" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeS-yx-H2b">
                                             <rect key="frame" x="73" y="55" width="214" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -80,27 +74,24 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gjk-A8-gIa" secondAttribute="trailing" constant="-8" id="51J-PC-CGQ"/>
                                         <constraint firstItem="5w1-XF-BcP" firstAttribute="leading" secondItem="pli-Cg-dNk" secondAttribute="leadingMargin" constant="19" id="5u8-vH-UrZ"/>
                                         <constraint firstAttribute="topMargin" secondItem="Ksa-kc-vXQ" secondAttribute="top" id="AgC-WE-Dzd"/>
                                         <constraint firstItem="5w1-XF-BcP" firstAttribute="top" secondItem="Ksa-kc-vXQ" secondAttribute="top" id="E4d-UB-Rpl"/>
-                                        <constraint firstItem="gjk-A8-gIa" firstAttribute="leading" secondItem="2j7-5g-T6h" secondAttribute="trailing" constant="8" id="GLe-E9-imO"/>
+                                        <constraint firstItem="gjk-A8-gIa" firstAttribute="leading" secondItem="2j7-5g-T6h" secondAttribute="trailing" constant="8" id="GVv-BL-lYu"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ksa-kc-vXQ" secondAttribute="trailing" constant="-8" id="Jsu-p8-B0l"/>
-                                        <constraint firstItem="2m1-Yj-dTK" firstAttribute="leading" secondItem="2j7-5g-T6h" secondAttribute="trailing" constant="8" id="PLk-fG-Yjf"/>
-                                        <constraint firstItem="2m1-Yj-dTK" firstAttribute="top" secondItem="gjk-A8-gIa" secondAttribute="bottom" id="TN5-o3-Pou"/>
                                         <constraint firstItem="FeS-yx-H2b" firstAttribute="leading" secondItem="pli-Cg-dNk" secondAttribute="leadingMargin" constant="65" id="V3H-cm-egm"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="2j7-5g-T6h" secondAttribute="leading" constant="-65" id="aB2-jL-9tK"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="FeS-yx-H2b" secondAttribute="trailing" constant="-8" id="ado-Lv-ZjC"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="CSC-1L-dXB" secondAttribute="leading" id="apt-df-dvw"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="2m1-Yj-dTK" secondAttribute="bottom" id="fTP-hH-2h0"/>
                                         <constraint firstItem="2j7-5g-T6h" firstAttribute="top" secondItem="FeS-yx-H2b" secondAttribute="bottom" constant="1" id="hzc-M8-i0c"/>
                                         <constraint firstItem="rWM-hn-n9k" firstAttribute="leading" secondItem="pli-Cg-dNk" secondAttribute="leadingMargin" constant="19" id="iZD-Yd-aiE"/>
                                         <constraint firstItem="nl9-Eb-rY3" firstAttribute="top" secondItem="5w1-XF-BcP" secondAttribute="bottom" constant="-1" id="j3O-97-fKC"/>
                                         <constraint firstItem="Ksa-kc-vXQ" firstAttribute="leading" secondItem="pli-Cg-dNk" secondAttribute="leadingMargin" constant="65" id="kpw-R1-hdx"/>
                                         <constraint firstItem="rWM-hn-n9k" firstAttribute="top" secondItem="FeS-yx-H2b" secondAttribute="top" id="p4r-zv-QOc"/>
                                         <constraint firstItem="nl9-Eb-rY3" firstAttribute="leading" secondItem="pli-Cg-dNk" secondAttribute="leadingMargin" constant="8" id="ql9-MX-hFG"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="gjk-A8-gIa" secondAttribute="trailing" constant="-8" id="tUg-3x-Odz"/>
+                                        <constraint firstItem="gjk-A8-gIa" firstAttribute="top" secondItem="FeS-yx-H2b" secondAttribute="bottom" constant="1" id="qnu-0j-cpe"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="2j7-5g-T6h" secondAttribute="bottom" id="ubD-g4-ri1"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="2m1-Yj-dTK" secondAttribute="trailing" constant="-8" id="udO-ZH-8JX"/>
                                         <constraint firstItem="CSC-1L-dXB" firstAttribute="top" secondItem="rWM-hn-n9k" secondAttribute="bottom" id="x31-JH-RWD"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -111,7 +102,6 @@
                                     <outlet property="_lblScore" destination="5w1-XF-BcP" id="YeJ-sY-Hfj"/>
                                     <outlet property="_lblTitle" destination="Ksa-kc-vXQ" id="Cmt-74-NuC"/>
                                     <outlet property="_lblUserDisplay" destination="gjk-A8-gIa" id="J9S-Oi-qMw"/>
-                                    <outlet property="_lblUserReputation" destination="2m1-Yj-dTK" id="QZQ-dp-qOj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -120,8 +110,17 @@
                             <outlet property="delegate" destination="kA6-u5-K9J" id="UHr-Z7-0Ak"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ccU-Ch-B7Q"/>
+                    <navigationItem key="navigationItem" id="ccU-Ch-B7Q">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="SD2-N3-bqA">
+                            <connections>
+                                <action selector="btnRefreshTap:" destination="kA6-u5-K9J" id="IAR-PN-vh4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="btnRefresh" destination="SD2-N3-bqA" id="S65-Qs-xva"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5LO-Nf-mek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -31,11 +31,6 @@ public struct User: Decodable
         return _profileImage
     }
     
-    private var _reputation: Int
-    var reputation: Int {
-        return _reputation
-    }
-    
     // temporal...
     private var _avatarURL: NSURL
     var avatarURL: NSURL {
@@ -50,8 +45,7 @@ public struct User: Decodable
     {
         guard let id: Int = "user_id" <~~ json,
             let displayName: String = "display_name" <~~ json,
-            let profileImage: String = "profile_image" <~~ json,
-            let reputation: Int = "reputation" <~~ json else {
+            let profileImage: String = "profile_image" <~~ json else {
                 return nil
         }
 
@@ -59,7 +53,6 @@ public struct User: Decodable
         _id = id
         _displayName = displayName
         _profileImage = profileImage
-        _reputation = reputation
         
         // temporal...
         _avatarURL = NSURL(string: _profileImage)!
