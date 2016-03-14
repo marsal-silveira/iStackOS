@@ -5,6 +5,7 @@ target 'iStackOS' do
 
 pod 'Alamofire'
 pod 'HanekeSwift'
+pod 'Gloss'
 
 end
 

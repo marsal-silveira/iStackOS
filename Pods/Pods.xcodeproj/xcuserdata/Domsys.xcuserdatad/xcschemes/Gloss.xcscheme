@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'FABABBC657E7C37CFBDC5EB8'
-               BlueprintName = 'Pods-iStackOS'
+               BlueprintIdentifier = '1FE5E6FB1CE8D670C5152B67'
+               BlueprintName = 'Gloss'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_iStackOS.framework'>
+               BuildableName = 'Gloss.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

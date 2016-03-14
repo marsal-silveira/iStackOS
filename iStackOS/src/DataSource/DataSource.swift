@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import Gloss
 
 // ****************************** //
 // MARK: StackOverflowTag
@@ -44,7 +45,8 @@ final class DataSource
     // MARK: Properties
     // ****************************** //
 
-    private let STACK_OVERFLOW_API_QUESTIONS_BASE_URL = "https://api.stackexchange.com/2.2/questions?pagesize=20&order=desc&sort=activity&site=stackoverflow&filter=withbody&tagged="
+//    private let STACK_OVERFLOW_API_QUESTIONS_BASE_URL = "https://api.stackexchange.com/2.2/questions?pagesize=20&order=desc&sort=activity&site=stackoverflow&filter=withbody&tagged="
+    private let STACK_OVERFLOW_API_QUESTIONS_BASE_URL = "https://api.stackexchange.com/2.2/questions?pagesize=50&page=4&order=desc&sort=creation&site=stackoverflow&tagged="
     
     // ********************************** //
     // MARK: Load Data using some filters
@@ -57,18 +59,50 @@ final class DataSource
     // - sort = activity
     // - filter = withbody
     // - tagged = ??
-    func loadDataWithTag(tag: StackOverflowTag)
+    func loadDataWithTag(tag: StackOverflowTag, successBlock:((questions: [Question]) -> Void), failureBlock:((error: NSError) -> Void))
     {
-        Alamofire.request(.GET, STACK_OVERFLOW_API_QUESTIONS_BASE_URL + tag.rawValue)
-            .responseJSON { response in
-                print(response.request)  // original URL request
-//                print(response.response) // URL response
-//                print(response.data)     // server data
-                print(response.result)   // result of response serialization
+        Logger.log(tag.rawValue)
+        
+        Alamofire.request(.GET, STACK_OVERFLOW_API_QUESTIONS_BASE_URL + tag.rawValue).responseJSON {
+            response in
+            
+//            print(response.request)  // original URL request
+//            print(response.response) // URL response
+//            print(response.data)     // server data
+//            print(response.result)   // result of response serialization
+//            debugPrint(response)
+//            
+//            if let JSON = response.result.value {
+//                print("JSON: \(JSON)")
+//            }
+            
+            if (response.result.isFailure) {
+                failureBlock(error: response.result.error!)
+            }
+            else {
                 
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+                var questions: [Question] = []
+                if let json = response.result.value, let jsonQuestions = json["items"] as? NSArray {
+                    
+                    for jsonQuestion in jsonQuestions {
+//                        print(jsonQuestion)
+                        
+                        if let question = Question(json: jsonQuestion as! Gloss.JSON) {
+                            questions.append(question)
+                        }
+                        // TODO: check this context... maybe return failureBlock with custom error...
+//                        else {
+//                            print("Error...")
+//                            abort()
+//                        }
+                    }
                 }
+                else {
+                    // TODO: check this context... maybe return failureBlock with custom error...
+                }
+                successBlock(questions: questions)
+            }
         }
     }
+    
 }
