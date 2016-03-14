@@ -41,41 +41,34 @@ final class DataSource
     // this prevents others from using the default '()' initializer for this class
     private init() {}
     
-    // ****************************** //
-    // MARK: Properties
-    // ****************************** //
-
+    // ******************************** //
+    // MARK: Properties and Constants
+    // ******************************** //
+    
+    // params with default value
+    private static let PARAM_page_size = 20
+    private static let PARAM_page = 1
+    private static let PARAM_order = "desc"
+    private static let PARAM_sort = "creation"
+    private static let PARAM_site = "stackoverflow"
+    private static let PARAM_filter = "withbody"
+    
+    // URL base
 //    private let STACK_OVERFLOW_API_QUESTIONS_BASE_URL = "https://api.stackexchange.com/2.2/questions?pagesize=20&order=desc&sort=activity&site=stackoverflow&filter=withbody&tagged="
-    private let STACK_OVERFLOW_API_QUESTIONS_BASE_URL = "https://api.stackexchange.com/2.2/questions?pagesize=50&page=4&order=desc&sort=creation&site=stackoverflow&tagged="
+    private static let STACK_OVERFLOW_API_QUESTIONS_BASE_URL = "https://api.stackexchange.com/2.2/questions?pagesize=\(PARAM_page_size)&page=\(PARAM_page)&order=\(PARAM_order)&sort=\(PARAM_sort)&site=\(PARAM_site)&tagged="
     
     // ********************************** //
     // MARK: Load Data using some filters
     // ********************************** //
     
-    // filters
-    // - site = stackoverflow
-    // - pageSize = 20
-    // - order = desc
-    // - sort = activity
-    // - filter = withbody
-    // - tagged = ??
     func loadDataWithTag(tag: StackOverflowTag, successBlock:((questions: [Question]) -> Void), failureBlock:((error: NSError) -> Void))
     {
-        Logger.log(tag.rawValue)
+        Logger.log("tag: \(tag.rawValue)")
         
-        Alamofire.request(.GET, STACK_OVERFLOW_API_QUESTIONS_BASE_URL + tag.rawValue).responseJSON {
+        let url = DataSource.STACK_OVERFLOW_API_QUESTIONS_BASE_URL + tag.rawValue
+        Alamofire.request(.GET,  url).responseJSON {
             response in
-            
-//            print(response.request)  // original URL request
-//            print(response.response) // URL response
-//            print(response.data)     // server data
-//            print(response.result)   // result of response serialization
-//            debugPrint(response)
-//            
-//            if let JSON = response.result.value {
-//                print("JSON: \(JSON)")
-//            }
-            
+
             if (response.result.isFailure) {
                 failureBlock(error: response.result.error!)
             }
@@ -85,7 +78,6 @@ final class DataSource
                 if let json = response.result.value, let jsonQuestions = json["items"] as? NSArray {
                     
                     for jsonQuestion in jsonQuestions {
-//                        print(jsonQuestion)
                         
                         if let question = Question(json: jsonQuestion as! Gloss.JSON) {
                             questions.append(question)

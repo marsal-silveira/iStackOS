@@ -77,11 +77,7 @@ class QuestionsTabViewController: UITableViewController {
             
             DataSource.sharedInstance().loadDataWithTag(tagFilter,  successBlock: {
                 questions in
-                
-                //                for question: Question in questions {
-                //                    Logger.log("question \(question.title)")
-                //                }
-                
+
                 // update questions internal list and refresh data
                 self._questions = questions
                 self.tableView.reloadData()
@@ -94,7 +90,8 @@ class QuestionsTabViewController: UITableViewController {
             })
         }
         else {
-            showSimpleAlertWithTitle("Opps", message: "Não é possível encontrar a tag associada ao ViewController selecionado", viewController: self)
+            let tagValue = self.parentViewController?.restorationIdentifier
+            showSimpleAlertWithTitle("Opps", message: String.localizedStringWithFormat(NSLocalizedString("[Invalid Tag]", comment: ""), tagValue!), viewController: self)
         }
     }
     

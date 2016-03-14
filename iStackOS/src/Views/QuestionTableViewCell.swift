@@ -61,40 +61,41 @@ class QuestionTableViewCell: UITableViewCell
     {
         var result: String? = nil;
         
-        // if published today = "Publicado há XX horas"
+        // if asked today = "Asked XX hours ago"
         if (creationDate.dateToString() == NSDate().dateToString()) {
             
             let calendar = NSCalendar.currentCalendar()
             
-            // activity hour and minute
+            // get creation and current hour and minute
             var components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: creationDate)
             let creationHour = components.hour
             let creationMinute = components.minute
-            
-            // current hour and minute
             components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: NSDate())
             let currentHour = components.hour
             let currentMinute = components.minute
             
             //
+            var period = 0
             if (creationHour != currentHour) {
-                result = "há \(currentHour-creationHour) \(currentHour-creationHour == 1 ? "hora" : "horas")"
+                period = currentHour-creationHour
+                result = String.localizedStringWithFormat(NSLocalizedString("[Asked Today]", comment: ""), [period, period == 1 ? "[hour]" : "[hours]"])
             }
             else {
-                result = "há \(currentMinute-creationMinute) \(currentMinute-creationMinute == 1 ? "minuto" : "minutos")"
+                period = currentMinute-creationMinute
+                result = String.localizedStringWithFormat(NSLocalizedString("[Asked Today]", comment: ""), [period, period == 1 ? "[minute]" : "[minutes]"])
             }
         }
-        // if published yesterday = "Publicado ontem as hh:mm:ss"
+        // if asked yesterday = "Asked yesterday at hh:mm:ss"
         else if (creationDate.dateToString() == self.getYesterday().dateToString()) {
-            
-            result = "Ontem as \(creationDate.timeToString())"
+            result = String.localizedStringWithFormat(NSLocalizedString("[Asked Yesterday]", comment: ""), creationDate.timeToString())
         }
-        // otherwise = "Publicado em dd de MMMM de yyyy"
+        // otherwise = "Asked at dd de MMMM de yyyy"
         else {
-            let day = creationDate.dayToString()
-            let month = self.translateMonth(Int(creationDate.monthNumberToString())!)
-            let year = creationDate.yearToString()
-            result = "\(day) de \(month) de \(year)"
+//            let day = creationDate.dayToString()
+//            let month = self.translateMonth(Int(creationDate.monthNumberToString())!)
+//            let year = creationDate.yearToString()
+//            result = "\(day) de \(month) de \(year)"
+            result = String.localizedStringWithFormat(NSLocalizedString("[Asked Month]", comment: ""), [creationDate.dateToString(),creationDate.timeToString()])
         }
         return result;
     }

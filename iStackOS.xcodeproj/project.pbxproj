@@ -22,6 +22,7 @@
 		5E95FB691C95E50B0014823C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB671C95E50B0014823C /* Question.swift */; };
 		5E95FB6A1C95E50B0014823C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB681C95E50B0014823C /* User.swift */; };
 		5E95FB711C9656590014823C /* NSDate+iStackOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB701C9656590014823C /* NSDate+iStackOS.m */; };
+		5E95FB7F1C96659B0014823C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E95FB811C96659B0014823C /* Localizable.strings */; };
 		6D742380FA562BB08D298172 /* Pods_iStackOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C5F95C0CC63886A099760B /* Pods_iStackOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,10 @@
 		5E95FB681C95E50B0014823C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5E95FB6F1C9656590014823C /* NSDate+iStackOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+iStackOS.h"; sourceTree = "<group>"; };
 		5E95FB701C9656590014823C /* NSDate+iStackOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+iStackOS.m"; sourceTree = "<group>"; };
+		5E95FB741C9664900014823C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		5E95FB751C9664900014823C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		5E95FB801C96659B0014823C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5E95FB821C9665A80014823C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		ED15EF6A02DB5E7BD2AB3287 /* Pods-iStackOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iStackOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-iStackOS/Pods-iStackOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +196,7 @@
 		5E95FB521C9504DD0014823C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5E95FB811C96659B0014823C /* Localizable.strings */,
 				5E95FB421C95040B0014823C /* Info.plist */,
 				5E95FB431C95040B0014823C /* iStackOS-Bridging-Header.h */,
 			);
@@ -346,6 +352,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 5E95FAFF1C94FE620014823C;
 			productRefGroup = 5E95FB091C94FE620014823C /* Products */;
@@ -365,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E95FB4C1C95040B0014823C /* Main.storyboard in Resources */,
+				5E95FB7F1C96659B0014823C /* Localizable.strings in Resources */,
 				5E95FB4A1C95040B0014823C /* Assets.xcassets in Resources */,
 				5E95FB4B1C95040B0014823C /* LaunchScreen.storyboard in Resources */,
 			);
@@ -488,6 +496,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5E95FB3F1C95040B0014823C /* Base */,
+				5E95FB751C9664900014823C /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -496,8 +505,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				5E95FB411C95040B0014823C /* Base */,
+				5E95FB741C9664900014823C /* pt-BR */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5E95FB811C96659B0014823C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E95FB801C96659B0014823C /* en */,
+				5E95FB821C9665A80014823C /* pt-BR */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

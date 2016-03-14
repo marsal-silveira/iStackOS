@@ -125,7 +125,24 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5LO-Nf-mek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="201" y="307"/>
+            <point key="canvasLocation" x="-247" y="-8"/>
+        </scene>
+        <!--Cocoa Touch-->
+        <scene sceneID="eWQ-qd-Lps">
+            <objects>
+                <navigationController storyboardIdentifier="cocoa-touch" title="Cocoa Touch" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R4U-pc-2CE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Cocoa Touch" image="tabbar-cocoa" id="RIs-TV-hOz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xAv-dr-pXw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kA6-u5-K9J" kind="relationship" relationship="rootViewController" id="zUL-HE-UgA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TIW-pE-Gns" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-746" y="-8"/>
         </scene>
         <!--Objective-C-->
         <scene sceneID="bkn-vC-H85">
@@ -142,7 +159,41 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="inB-rU-bLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-296" y="657"/>
+            <point key="canvasLocation" x="-746" y="1233"/>
+        </scene>
+        <!--iPhone-->
+        <scene sceneID="LkF-hc-vtM">
+            <objects>
+                <navigationController storyboardIdentifier="iphone" title="iPhone" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RxK-cn-fnX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="iPhone" image="tabbar-iphone" id="oF6-dw-MLp"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eFp-w8-4i7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kA6-u5-K9J" kind="relationship" relationship="rootViewController" id="l83-Rd-ocr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WMP-V5-nLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-746" y="-1232"/>
+        </scene>
+        <!--UiKit-->
+        <scene sceneID="5cW-Ib-qin">
+            <objects>
+                <navigationController storyboardIdentifier="uikit" title="UiKit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i3m-DF-pF3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="UiKit" image="tabbar-uikit" id="3gg-Vs-V0A"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N6g-Cn-Ehg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kA6-u5-K9J" kind="relationship" relationship="rootViewController" id="HIQ-Cd-zhx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="csy-tK-vou" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-746" y="605"/>
         </scene>
         <!--Swift-->
         <scene sceneID="OPa-Iw-96n">
@@ -154,12 +205,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="kA6-u5-K9J" kind="relationship" relationship="rootViewController" id="lId-Jx-phC"/>
+                        <segue destination="kA6-u5-K9J" kind="relationship" relationship="rootViewController" id="iJd-qs-IS9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9N8-hw-P0z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-296" y="-8"/>
+            <point key="canvasLocation" x="-746" y="-618"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N3q-E6-4Wi">
@@ -174,17 +225,23 @@
                     <connections>
                         <segue destination="gh1-Jj-KVi" kind="relationship" relationship="viewControllers" id="Lzz-lX-GaU"/>
                         <segue destination="5bx-CS-3Rl" kind="relationship" relationship="viewControllers" id="vEk-bh-hwM"/>
+                        <segue destination="R4U-pc-2CE" kind="relationship" relationship="viewControllers" id="6aH-kS-wZi"/>
+                        <segue destination="RxK-cn-fnX" kind="relationship" relationship="viewControllers" id="xmI-Lf-4kw"/>
+                        <segue destination="i3m-DF-pF3" kind="relationship" relationship="viewControllers" id="QuG-cm-2gf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQd-Ms-yuL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-698" y="-8"/>
+            <point key="canvasLocation" x="-1172" y="-8"/>
         </scene>
     </scenes>
     <resources>
         <image name="default-avatar" width="1290" height="1290"/>
+        <image name="tabbar-cocoa" width="25" height="25"/>
+        <image name="tabbar-iphone" width="25" height="25"/>
         <image name="tabbar-objc" width="25" height="25"/>
         <image name="tabbar-swift" width="25" height="25"/>
+        <image name="tabbar-uikit" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Riy-1d-6kN"/>
