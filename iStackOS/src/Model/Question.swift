@@ -49,6 +49,11 @@ public struct Question: Decodable
     var owner: User {
         return _owner
     }
+    
+    private var _answers: [Answer]
+    var answers: [Answer] {
+        return _answers
+    }
 
     // ****************************** //
     // MARK: Init
@@ -73,6 +78,8 @@ public struct Question: Decodable
         _link = link
         _creationDate = NSDate(timeIntervalSince1970: creationDateTimeInterval)
         _owner = owner
+        
+        _answers = [Answer]()
     }
 
 }

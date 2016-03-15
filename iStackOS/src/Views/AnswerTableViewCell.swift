@@ -1,15 +1,15 @@
 //
-//  QuestionTableViewCell.swift
+//  AnswerTableViewCell.swift
 //  iStackOS
 //
-//  Created by Marsal on 13/03/16.
+//  Created by Marsal on 15/03/16.
 //  Copyright © 2016 Marsal Silveira. All rights reserved.
 //
 
 import UIKit
 import Haneke
 
-class QuestionTableViewCell: UITableViewCell
+class AnswerTableViewCell: UITableViewCell
 {
     // *********************************** //
     // MARK: @IBOutlet

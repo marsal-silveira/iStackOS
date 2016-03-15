@@ -15,7 +15,6 @@
 		5E95FB4E1C95040B0014823C /* iStackOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB441C95040B0014823C /* iStackOS.xcdatamodeld */; };
 		5E95FB4F1C95040B0014823C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB471C95040B0014823C /* AppDelegate.swift */; };
 		5E95FB541C95B8BE0014823C /* QuestionsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB531C95B8BE0014823C /* QuestionsTabViewController.swift */; };
-		5E95FB5E1C95BC550014823C /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB5B1C95BC550014823C /* QuestionTableViewCell.swift */; };
 		5E95FB611C95C3860014823C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB5F1C95C3860014823C /* Logger.swift */; };
 		5E95FB621C95C3860014823C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB601C95C3860014823C /* Utils.swift */; };
 		5E95FB651C95C7320014823C /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB641C95C7320014823C /* DataSource.swift */; };
@@ -23,6 +22,12 @@
 		5E95FB6A1C95E50B0014823C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB681C95E50B0014823C /* User.swift */; };
 		5E95FB711C9656590014823C /* NSDate+iStackOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB701C9656590014823C /* NSDate+iStackOS.m */; };
 		5E95FB7F1C96659B0014823C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E95FB811C96659B0014823C /* Localizable.strings */; };
+		5E95FB861C97B61E0014823C /* QuestionDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB851C97B61E0014823C /* QuestionDetailsTableViewController.swift */; };
+		5E95FB881C97B65A0014823C /* QuestionDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB871C97B65A0014823C /* QuestionDetailsTableViewCell.swift */; };
+		5E95FB8B1C97B8420014823C /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB891C97B8420014823C /* AnswerTableViewCell.swift */; };
+		5E95FB8C1C97B8420014823C /* QuestionPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB8A1C97B8420014823C /* QuestionPreviewTableViewCell.swift */; };
+		5E95FB8E1C97BAA00014823C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB8D1C97BAA00014823C /* Constants.swift */; };
+		5E95FB901C97BEC20014823C /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95FB8F1C97BEC20014823C /* Answer.swift */; };
 		6D742380FA562BB08D298172 /* Pods_iStackOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C5F95C0CC63886A099760B /* Pods_iStackOS.framework */; };
 		8BF99D231C9720CA00274FDC /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF99D221C9720CA00274FDC /* NetworkUtils.swift */; };
 /* End PBXBuildFile section */
@@ -62,7 +67,6 @@
 		5E95FB451C95040B0014823C /* iStackOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iStackOS.xcdatamodel; sourceTree = "<group>"; };
 		5E95FB471C95040B0014823C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E95FB531C95B8BE0014823C /* QuestionsTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsTabViewController.swift; sourceTree = "<group>"; };
-		5E95FB5B1C95BC550014823C /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		5E95FB5F1C95C3860014823C /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		5E95FB601C95C3860014823C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		5E95FB641C95C7320014823C /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -74,6 +78,12 @@
 		5E95FB751C9664900014823C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		5E95FB801C96659B0014823C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E95FB821C9665A80014823C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		5E95FB851C97B61E0014823C /* QuestionDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionDetailsTableViewController.swift; sourceTree = "<group>"; };
+		5E95FB871C97B65A0014823C /* QuestionDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		5E95FB891C97B8420014823C /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
+		5E95FB8A1C97B8420014823C /* QuestionPreviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPreviewTableViewCell.swift; sourceTree = "<group>"; };
+		5E95FB8D1C97BAA00014823C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5E95FB8F1C97BEC20014823C /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		8BF99D221C9720CA00274FDC /* NetworkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
 		ED15EF6A02DB5E7BD2AB3287 /* Pods-iStackOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iStackOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-iStackOS/Pods-iStackOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				5E95FB531C95B8BE0014823C /* QuestionsTabViewController.swift */,
+				5E95FB851C97B61E0014823C /* QuestionDetailsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 				8BF99D221C9720CA00274FDC /* NetworkUtils.swift */,
 				5E95FB5F1C95C3860014823C /* Logger.swift */,
 				5E95FB601C95C3860014823C /* Utils.swift */,
+				5E95FB8D1C97BAA00014823C /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -218,7 +230,9 @@
 		5E95FB581C95BC550014823C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5E95FB5B1C95BC550014823C /* QuestionTableViewCell.swift */,
+				5E95FB8A1C97B8420014823C /* QuestionPreviewTableViewCell.swift */,
+				5E95FB871C97B65A0014823C /* QuestionDetailsTableViewCell.swift */,
+				5E95FB891C97B8420014823C /* AnswerTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +250,7 @@
 			children = (
 				5E95FB671C95E50B0014823C /* Question.swift */,
 				5E95FB681C95E50B0014823C /* User.swift */,
+				5E95FB8F1C97BEC20014823C /* Answer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -450,10 +465,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E95FB5E1C95BC550014823C /* QuestionTableViewCell.swift in Sources */,
+				5E95FB881C97B65A0014823C /* QuestionDetailsTableViewCell.swift in Sources */,
+				5E95FB8B1C97B8420014823C /* AnswerTableViewCell.swift in Sources */,
+				5E95FB8C1C97B8420014823C /* QuestionPreviewTableViewCell.swift in Sources */,
 				5E95FB711C9656590014823C /* NSDate+iStackOS.m in Sources */,
 				5E95FB541C95B8BE0014823C /* QuestionsTabViewController.swift in Sources */,
+				5E95FB8E1C97BAA00014823C /* Constants.swift in Sources */,
 				5E95FB691C95E50B0014823C /* Question.swift in Sources */,
+				5E95FB901C97BEC20014823C /* Answer.swift in Sources */,
+				5E95FB861C97B61E0014823C /* QuestionDetailsTableViewController.swift in Sources */,
 				5E95FB651C95C7320014823C /* DataSource.swift in Sources */,
 				5E95FB611C95C3860014823C /* Logger.swift in Sources */,
 				8BF99D231C9720CA00274FDC /* NetworkUtils.swift in Sources */,

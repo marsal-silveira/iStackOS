@@ -1,87 +1,87 @@
 //
-//  QuestionsTabViewController.swift
+//  QuestionDetailsTableViewController.swift
 //  iStackOS
 //
-//  Created by Marsal on 13/03/16.
+//  Created by Marsal on 15/03/16.
 //  Copyright © 2016 Marsal Silveira. All rights reserved.
 //
 
 import UIKit
 
-class QuestionsTabViewController: UITableViewController
+class QuestionDetailsTableViewController: UITableViewController
 {
     // ********************************** //
     // MARK: Properties
     // ********************************** //
-        
-    private var _questions = [Question]()
-    private var _selectedQuestion: Question!
-
+    
+    private var _question: Question!
+    var question: Question {
+        get { return _question }
+        set(newValue) { _question = newValue }
+    }
+    
     // ********************************** //
     // MARK: <UIViewController> Lifecycle
     // ********************************** //
-
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        self.clearsSelectionOnViewWillAppear = false
-        self.title = self.parentViewController?.title
-        
-        //
-        self.loadData()
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        if (segue.identifier == STORYBOARD_SEGUE_PreviewToDetails) {
-            let viewController = segue.destinationViewController as! QuestionDetailsTableViewController
-            viewController.question = _selectedQuestion
-        }
+        // update title with selected question title
+        self.navigationItem.title = "\(_question.title)"
     }
     
     // ********************************** //
     // MARK: <UITableViewDataSource>
     // ********************************** //
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return _questions.count
+        // section 1) Details
+        // section 2) Answers
+        return 2
     }
     
-    // *********************************** //
-    // MARK: <UITableViewDelegate>
-    // *********************************** //
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        var result = 0
+        if section == 0 {
+            result = 1
+        }
+        else {
+            result = _question.answers.count
+        }
+        return result
+    }
+    
+    // ********************************** //
+    // MARK: UITableViewDelegate
+    // ********************************** //
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
         return 110
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        var result: QuestionPreviewTableViewCell
-        if let cell = tableView.dequeueReusableCellWithIdentifier(CELL_IDENTIFIER_Question_Preview) as? QuestionPreviewTableViewCell {
+        var result: QuestionDetailsTableViewCell
+        if let cell = tableView.dequeueReusableCellWithIdentifier(CELL_IDENTIFIER_Question_Details) as? QuestionDetailsTableViewCell {
             result = cell
         }
         else {
-            result = QuestionPreviewTableViewCell()
+            result = QuestionDetailsTableViewCell()
         }
         result.configureCellWithQuestion(_questions[indexPath.row])
         
         return result
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
-        _selectedQuestion = _questions[indexPath.row]
-        performSegueWithIdentifier(STORYBOARD_SEGUE_PreviewToDetails, sender: self)
-    }
-    
     // ********************************** //
     // MARK: @IBOutlet
     // ********************************** //
-
+    
     @IBOutlet weak var btnRefresh: UIBarButtonItem!
     
     // ********************************** //
@@ -92,7 +92,7 @@ class QuestionsTabViewController: UITableViewController
     {
         self.loadData()
     }
-
+    
     // ********************************** //
     // MARK: Load Data
     // ********************************** //
@@ -102,7 +102,7 @@ class QuestionsTabViewController: UITableViewController
         
         // only continue if device has network connection...
         if (isConnectedToNetwork()) {
-
+            
             // get tag filter using parentViewController... Each view controller is associated to one tag filter value...
             if let restorationIdentifier = self.parentViewController?.restorationIdentifier, let tagFilter = StackOverflowTag(rawValue: restorationIdentifier) {
                 
@@ -138,5 +138,17 @@ class QuestionsTabViewController: UITableViewController
             showSimpleAlertWithTitle("Opps!", message: NSLocalizedString("[Internet Connection Not Found]", comment: ""), viewController: self)
         }
     }
-
+    
+    // ********************************** //
+    // MARK: Navigation
+    // ********************************** //
+    
+    /*
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+    }
+    */
+    
 }
