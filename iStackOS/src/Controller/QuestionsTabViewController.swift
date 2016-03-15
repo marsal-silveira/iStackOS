@@ -109,7 +109,7 @@ class QuestionsTabViewController: UITableViewController
                 // disable refresh button to avoid exec more than one refresh process...
                 btnRefresh.enabled = false
                 
-                DataSource.sharedInstance().loadDataWithTag(tagFilter,  successBlock: {
+                DataSource.sharedInstance().fetchQuestionsWithTag(tagFilter, successBlock: {
                     questions in
                     
                     // update questions internal list and refresh data

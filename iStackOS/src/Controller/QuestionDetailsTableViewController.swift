@@ -14,6 +14,8 @@ class QuestionDetailsTableViewController: UITableViewController
     // MARK: Properties
     // ********************************** //
     
+    private var _answers = [Answer]()
+    
     private var _question: Question!
     var question: Question {
         get { return _question }
@@ -30,6 +32,8 @@ class QuestionDetailsTableViewController: UITableViewController
         
         // update title with selected question title
         self.navigationItem.title = "\(_question.title)"
+        
+        self.loadData()
     }
     
     // ********************************** //
@@ -45,14 +49,7 @@ class QuestionDetailsTableViewController: UITableViewController
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        var result = 0
-        if section == 0 {
-            result = 1
-        }
-        else {
-            result = _question.answers.count
-        }
-        return result
+        return (section == 0) ? 1 : _question.answerCount
     }
     
     // ********************************** //
@@ -61,23 +58,50 @@ class QuestionDetailsTableViewController: UITableViewController
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 110
+        if (indexPath.section == 0) {
+            return 180
+        }
+        else {
+            return 120
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        var result: QuestionDetailsTableViewCell
+        if indexPath.section == 0 {
+            return self.cellForDetails()
+        }
+        else {
+            return self.cellForAnswerAtIndexPath(indexPath)
+        }
+    }
+    
+    private func cellForDetails() -> QuestionDetailsTableViewCell
+    {
+        var result: QuestionDetailsTableViewCell!
         if let cell = tableView.dequeueReusableCellWithIdentifier(CELL_IDENTIFIER_Question_Details) as? QuestionDetailsTableViewCell {
             result = cell
         }
         else {
             result = QuestionDetailsTableViewCell()
         }
-        result.configureCellWithQuestion(_questions[indexPath.row])
-        
+        result.configureCellWithQuestion(_question)
         return result
     }
     
+    private func cellForAnswerAtIndexPath(indexPath: NSIndexPath) -> AnswerTableViewCell
+    {
+        var result: AnswerTableViewCell!
+        if let cell = tableView.dequeueReusableCellWithIdentifier(CELL_IDENTIFIER_Answer) as? AnswerTableViewCell {
+            result = cell
+        }
+        else {
+            result = AnswerTableViewCell()
+        }
+//        result.configureCellWithQuestion(<#T##question: Question##Question#>)(<#T##question: Question##Question#>)(_club.parties![indexPath.row])
+        return result
+    }
+
     // ********************************** //
     // MARK: @IBOutlet
     // ********************************** //
@@ -92,63 +116,33 @@ class QuestionDetailsTableViewController: UITableViewController
     {
         self.loadData()
     }
-    
+
     // ********************************** //
     // MARK: Load Data
     // ********************************** //
-    
+
     private func loadData()
     {
-        
         // only continue if device has network connection...
         if (isConnectedToNetwork()) {
             
-            // get tag filter using parentViewController... Each view controller is associated to one tag filter value...
-            if let restorationIdentifier = self.parentViewController?.restorationIdentifier, let tagFilter = StackOverflowTag(rawValue: restorationIdentifier) {
-                
-                // disable refresh button to avoid exec more than one refresh process...
-                btnRefresh.enabled = false
-                
-                DataSource.sharedInstance().loadDataWithTag(tagFilter,  successBlock: {
-                    questions in
+            DataSource.sharedInstance().fetchAnswersFromQuestion(question,  successBlock: {
+                answers in
                     
-                    // update questions internal list and refresh data
-                    self._questions = questions
-                    self.tableView.reloadData()
-                    
-                    // enabled refresh button again...
-                    self.btnRefresh.enabled = true
-                    },
-                    failureBlock: {
-                        errro in
+                // update answers internal list and refresh data
+                self._answers = answers
+                self.tableView.reloadData()
+                },
+                failureBlock: {
+                    errro in
                         
-                        // TODO: check error type to handle it accordlly
-                        self._questions = []
-                        
-                        // enabled refresh button again...
-                        self.btnRefresh.enabled = true
-                })
-            }
-            else {
-                let tagValue = self.parentViewController?.restorationIdentifier
-                showSimpleAlertWithTitle("Opps!", message: String.localizedStringWithFormat(NSLocalizedString("[Invalid Tag]", comment: ""), tagValue!), viewController: self)
-            }
+                    // TODO: check error type to handle it accordlly
+                    self._answers = []
+            })
         }
         else {
             showSimpleAlertWithTitle("Opps!", message: NSLocalizedString("[Internet Connection Not Found]", comment: ""), viewController: self)
         }
     }
-    
-    // ********************************** //
-    // MARK: Navigation
-    // ********************************** //
-    
-    /*
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }

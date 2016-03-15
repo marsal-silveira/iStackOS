@@ -25,6 +25,11 @@ public struct Question: Decodable
         return _title
     }
     
+    private var _body: String
+    public var body: String {
+        return _body
+    }
+    
     private var _answerCount: Int
     var answerCount: Int {
         return _answerCount
@@ -49,11 +54,6 @@ public struct Question: Decodable
     var owner: User {
         return _owner
     }
-    
-    private var _answers: [Answer]
-    var answers: [Answer] {
-        return _answers
-    }
 
     // ****************************** //
     // MARK: Init
@@ -63,6 +63,7 @@ public struct Question: Decodable
     {
         guard let id: Int = "question_id" <~~ json,
               let title: String = "title" <~~ json,
+              let body: String = "body" <~~ json,
               let answerCount: Int = "answer_count" <~~ json,
               let score: Int = "score" <~~ json,
               let link: String = "link" <~~ json,
@@ -73,13 +74,12 @@ public struct Question: Decodable
         
         _id = id
         _title = title
+        _body = body
         _answerCount = answerCount
         _score = score
         _link = link
         _creationDate = NSDate(timeIntervalSince1970: creationDateTimeInterval)
         _owner = owner
-        
-        _answers = [Answer]()
     }
 
 }

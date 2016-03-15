@@ -45,27 +45,24 @@ final class DataSource
     // MARK: Properties and Constants
     // ******************************** //
     
-    // params with default value
-    private static let PARAM_page_size = 20
-    private static let PARAM_page = 50
-    private static let PARAM_order = "desc"
-    private static let PARAM_sort = "creation"
-    private static let PARAM_site = "stackoverflow"
-    private static let PARAM_filter = "withbody"
+    // SO API Base URL
+    private static let SO_API_BASE_URL = "https://api.stackexchange.com/2.2/questions"
     
-    // URL base
-//    private let STACK_OVERFLOW_API_QUESTIONS_BASE_URL = "https://api.stackexchange.com/2.2/questions?pagesize=20&order=desc&sort=activity&site=stackoverflow&filter=withbody&tagged="
-    private static let STACK_OVERFLOW_API_QUESTIONS_BASE_URL = "https://api.stackexchange.com/2.2/questions?pagesize=\(PARAM_page_size)&page=\(PARAM_page)&order=\(PARAM_order)&sort=\(PARAM_sort)&site=\(PARAM_site)&tagged="
+    // StackOverflow API URL bases
+    private static let SO_API_QUESTION_URL = SO_API_BASE_URL + "?pagesize=20&page=1&sort=creation&order=desc&site=stackoverflow&filter=withbody&tagged=%@"
+    
+    // StackOverflow API URL bases
+    private static let SO_API_ANSWERS_URL = SO_API_BASE_URL + "/%@/answers?order=desc&sort=activity&site=stackoverflow&filter=withbody"
     
     // ********************************** //
-    // MARK: Load Data using some filters
+    // MARK: Fetch Data with filters
     // ********************************** //
     
-    func loadDataWithTag(tag: StackOverflowTag, successBlock:((questions: [Question]) -> Void), failureBlock:((error: NSError) -> Void))
+    func fetchQuestionsWithTag(tag: StackOverflowTag, successBlock:((questions: [Question]) -> Void), failureBlock:((error: NSError) -> Void))
     {
         Logger.log("tag: \(tag.rawValue)")
         
-        let url = DataSource.STACK_OVERFLOW_API_QUESTIONS_BASE_URL + tag.rawValue
+        let url = String(format: DataSource.SO_API_QUESTION_URL, arguments: [tag.rawValue])
         Alamofire.request(.GET,  url).responseJSON {
             response in
 
@@ -93,6 +90,42 @@ final class DataSource
                     // TODO: check this context... maybe return failureBlock with custom error...
                 }
                 successBlock(questions: questions)
+            }
+        }
+    }
+    
+    func fetchAnswersFromQuestion(question: Question, successBlock:((answers: [Answer]) -> Void), failureBlock:((error: NSError) -> Void))
+    {
+        Logger.log("question: \(question.title)")
+        
+        let url = String(format: DataSource.SO_API_ANSWERS_URL, arguments: [question.id])
+        Alamofire.request(.GET,  url).responseJSON {
+            response in
+            
+            if (response.result.isFailure) {
+                failureBlock(error: response.result.error!)
+            }
+            else {
+                
+                var answers: [Answer] = []
+                if let json = response.result.value, let jsonAnswers = json["items"] as? NSArray {
+                    
+                    for jsonAnswer in jsonAnswers {
+                        
+                        if let answer = Answer(json: jsonAnswer as! Gloss.JSON) {
+                            answers.append(answer)
+                        }
+                        // TODO: check this context... maybe return failureBlock with custom error...
+                        //                        else {
+                        //                            print("Error...")
+                        //                            abort()
+                        //                        }
+                    }
+                }
+                else {
+                    // TODO: check this context... maybe return failureBlock with custom error...
+                }
+                successBlock(answers: answers)
             }
         }
     }
