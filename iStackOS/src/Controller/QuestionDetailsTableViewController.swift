@@ -11,8 +11,11 @@ import UIKit
 class QuestionDetailsTableViewController: UITableViewController
 {
     // ********************************** //
-    // MARK: Properties
+    // MARK: Properties and Constants
     // ********************************** //
+    
+    private let SECTION_DETAILS = 0
+    private let SECTION_ANSWERS = 1
     
     private var _answers = [Answer]()
     
@@ -20,6 +23,16 @@ class QuestionDetailsTableViewController: UITableViewController
     var question: Question {
         get { return _question }
         set(newValue) { _question = newValue }
+    }
+    
+    // ********************************** //
+    // MARK: Init and Setup
+    // ********************************** //
+    
+    func configureTableView()
+    {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 160.0
     }
     
     // ********************************** //
@@ -33,6 +46,7 @@ class QuestionDetailsTableViewController: UITableViewController
         // update title with selected question title
         self.navigationItem.title = "\(_question.title)"
         
+        self.configureTableView()
         self.loadData()
     }
     
@@ -40,35 +54,30 @@ class QuestionDetailsTableViewController: UITableViewController
     // MARK: <UITableViewDataSource>
     // ********************************** //
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
-        // section 1) Details
-        // section 2) Answers
-        return 2
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return (section == 0) ? 1 : _question.answerCount
+        return (section == SECTION_DETAILS) ? 1 : _answers.count
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        return (section == SECTION_ANSWERS) ? NSLocalizedString("[Answers]", comment: "") : nil
     }
     
     // ********************************** //
     // MARK: UITableViewDelegate
     // ********************************** //
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        if (indexPath.section == 0) {
-            return 180
-        }
-        else {
-            return 120
-        }
+        // section 1) Details
+        // section 2) Answers
+        return (_answers.count == 0) ? 1 : 2
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        if indexPath.section == 0 {
+        if (indexPath.section == SECTION_DETAILS) {
             return self.cellForDetails()
         }
         else {
@@ -98,7 +107,14 @@ class QuestionDetailsTableViewController: UITableViewController
         else {
             result = AnswerTableViewCell()
         }
-//        result.configureCellWithQuestion(<#T##question: Question##Question#>)(<#T##question: Question##Question#>)(_club.parties![indexPath.row])
+
+        let answer = _answers[indexPath.row]
+        var isAccepted: Bool = false
+        if let isAcceptedAnswerID = _question.acceptedAnswerID {
+            
+            isAccepted = answer.id == isAcceptedAnswerID
+        }
+        result.configureCellWithAnser(answer, isAccepted: isAccepted)
         return result
     }
 
@@ -141,7 +157,7 @@ class QuestionDetailsTableViewController: UITableViewController
             })
         }
         else {
-            showSimpleAlertWithTitle("Opps!", message: NSLocalizedString("[Internet Connection Not Found]", comment: ""), viewController: self)
+            Utils.showSimpleAlertWithTitle("Opps!", message: NSLocalizedString("[Internet Connection Not Found]", comment: ""), viewController: self)
         }
     }
     

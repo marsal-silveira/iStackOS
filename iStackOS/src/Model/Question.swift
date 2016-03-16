@@ -50,6 +50,11 @@ public struct Question: Decodable
         return _creationDate
     }
     
+    private var _acceptedAnswerID: Int?
+    var acceptedAnswerID: Int? {
+        return _acceptedAnswerID
+    }
+
     private var _owner: User
     var owner: User {
         return _owner
@@ -79,6 +84,7 @@ public struct Question: Decodable
         _score = score
         _link = link
         _creationDate = NSDate(timeIntervalSince1970: creationDateTimeInterval)
+        _acceptedAnswerID = "accepted_answer_id" <~~ json
         _owner = owner
     }
 

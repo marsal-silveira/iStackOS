@@ -20,7 +20,12 @@
 "[Asked Today]" = "perguntada %@ atrás";
 "[Asked Yesterday]" = "perguntada ontem as %@";
 "[Asked Month]" = "perguntada %@";
-"[at]" = "às";
+
+"[Answered Today]" = "respondida %@ atrás";
+"[Answered Yesterday]" = "respondida ontem as %@";
+"[Answered Month]" = "respondida %@";
+
+"[Answers]" = "Respostas";
 
 "[hour]" = "hora";
 "[hours]" = "horas";

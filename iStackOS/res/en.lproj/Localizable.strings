@@ -20,7 +20,12 @@
 "[Asked Today]" = "asked %@ ago";
 "[Asked Yesterday]" = "asked yesterday at %@";
 "[Asked Month]" = "asked %@";
-"[at]" = "at";
+
+"[Answered Today]" = "answered %@ ago";
+"[Answered Yesterday]" = "answered yesterday at %@";
+"[Answered Month]" = "answered %@";
+
+"[Answers]" = "Answers";
 
 "[hour]" = "hour";
 "[hours]" = "hours";

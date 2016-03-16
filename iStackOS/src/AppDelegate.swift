@@ -22,11 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     // MARK: Singleton
     // ****************************** //
 
-//    final class TheOneAndOnlyKraken {
-//        static let sharedInstance = TheOneAndOnlyKraken()
-//        private init() {} //This prevents others from using the default '()' initializer for this class.
-//    }
-
     class func shareInstance() -> AppDelegate
     {
         return UIApplication.sharedApplication().delegate as! AppDelegate

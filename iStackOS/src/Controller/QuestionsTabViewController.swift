@@ -16,7 +16,22 @@ class QuestionsTabViewController: UITableViewController
         
     private var _questions = [Question]()
     private var _selectedQuestion: Question!
-
+    
+    // ********************************** //
+    // MARK: @IBOutlet
+    // ********************************** //
+    
+    @IBOutlet weak var btnRefresh: UIBarButtonItem!
+    
+    // ********************************** //
+    // MARK: @IBAction
+    // ********************************** //
+    
+    @IBAction func btnRefreshTap(sender: UIBarButtonItem)
+    {
+        self.loadData()
+    }
+    
     // ********************************** //
     // MARK: <UIViewController> Lifecycle
     // ********************************** //
@@ -30,6 +45,27 @@ class QuestionsTabViewController: UITableViewController
         
         //
         self.loadData()
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        self.deselectAllRows()
+    }
+    
+    // ********************************** //
+    // MARK: Utils
+    // ********************************** //
+    
+    func deselectAllRows()
+    {
+        if let selectedRows = tableView.indexPathsForSelectedRows {
+            
+            for indexPath in selectedRows {
+                tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -79,27 +115,11 @@ class QuestionsTabViewController: UITableViewController
     }
     
     // ********************************** //
-    // MARK: @IBOutlet
-    // ********************************** //
-
-    @IBOutlet weak var btnRefresh: UIBarButtonItem!
-    
-    // ********************************** //
-    // MARK: @IBAction
-    // ********************************** //
-    
-    @IBAction func btnRefreshTap(sender: UIBarButtonItem)
-    {
-        self.loadData()
-    }
-
-    // ********************************** //
     // MARK: Load Data
     // ********************************** //
     
     private func loadData()
     {
-        
         // only continue if device has network connection...
         if (isConnectedToNetwork()) {
 
@@ -131,11 +151,11 @@ class QuestionsTabViewController: UITableViewController
             }
             else {
                 let tagValue = self.parentViewController?.restorationIdentifier
-                showSimpleAlertWithTitle("Opps!", message: String.localizedStringWithFormat(NSLocalizedString("[Invalid Tag]", comment: ""), tagValue!), viewController: self)
+                Utils.showSimpleAlertWithTitle("Opps!", message: String.localizedStringWithFormat(NSLocalizedString("[Invalid Tag]", comment: ""), tagValue!), viewController: self)
             }
         }
         else {
-            showSimpleAlertWithTitle("Opps!", message: NSLocalizedString("[Internet Connection Not Found]", comment: ""), viewController: self)
+            Utils.showSimpleAlertWithTitle("Opps!", message: NSLocalizedString("[Internet Connection Not Found]", comment: ""), viewController: self)
         }
     }
 

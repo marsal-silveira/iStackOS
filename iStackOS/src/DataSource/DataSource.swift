@@ -49,20 +49,20 @@ final class DataSource
     private static let SO_API_BASE_URL = "https://api.stackexchange.com/2.2/questions"
     
     // StackOverflow API URL bases
-    private static let SO_API_QUESTION_URL = SO_API_BASE_URL + "?pagesize=20&page=1&sort=creation&order=desc&site=stackoverflow&filter=withbody&tagged=%@"
+    private static let SO_API_QUESTION_URL = SO_API_BASE_URL + "?tagged=%@&page=%d&pagesize=%d&sort=%@&order=%@&filter=withbody&site=stackoverflow"
     
     // StackOverflow API URL bases
-    private static let SO_API_ANSWERS_URL = SO_API_BASE_URL + "/%@/answers?order=desc&sort=activity&site=stackoverflow&filter=withbody"
+    private static let SO_API_ANSWERS_URL = SO_API_BASE_URL + "/%d/answers?sort=%@&order=%@&filter=withbody&site=stackoverflow"
     
     // ********************************** //
     // MARK: Fetch Data with filters
     // ********************************** //
     
-    func fetchQuestionsWithTag(tag: StackOverflowTag, successBlock:((questions: [Question]) -> Void), failureBlock:((error: NSError) -> Void))
+    func fetchQuestionsWithTag(tag: StackOverflowTag, page: Int = 1, pagesize: Int = 20, sort: String = "creation", order: String = "desc", successBlock:((questions: [Question]) -> Void), failureBlock:((error: NSError) -> Void))
     {
         Logger.log("tag: \(tag.rawValue)")
         
-        let url = String(format: DataSource.SO_API_QUESTION_URL, arguments: [tag.rawValue])
+        let url = String(format: DataSource.SO_API_QUESTION_URL, arguments: [tag.rawValue, page, pagesize, sort, order])
         Alamofire.request(.GET,  url).responseJSON {
             response in
 
@@ -94,11 +94,11 @@ final class DataSource
         }
     }
     
-    func fetchAnswersFromQuestion(question: Question, successBlock:((answers: [Answer]) -> Void), failureBlock:((error: NSError) -> Void))
+    func fetchAnswersFromQuestion(question: Question, sort: String = "votes", order: String = "desc", successBlock:((answers: [Answer]) -> Void), failureBlock:((error: NSError) -> Void))
     {
         Logger.log("question: \(question.title)")
         
-        let url = String(format: DataSource.SO_API_ANSWERS_URL, arguments: [question.id])
+        let url = String(format: DataSource.SO_API_ANSWERS_URL, arguments: [question.id, sort, order])
         Alamofire.request(.GET,  url).responseJSON {
             response in
             

@@ -2,28 +2,12 @@
 //  Answer.swift
 //  iStackOS
 //
-//  Created by Domsys on 15/03/16.
+//  Created by Marsal on 15/03/16.
 //  Copyright © 2016 Marsal Silveira. All rights reserved.
 //
 
 import Foundation
 import Gloss
-
-extension Int
-{
-    func toBool () ->Bool?
-    {
-        if (self == 0) {
-            return false
-        }
-        else if (self == 1) {
-            return true
-        }
-        else {
-            return nil
-        }
-    }    
-}
 
 public struct Answer: Decodable
 {
@@ -90,7 +74,7 @@ public struct Answer: Decodable
         
         _id = id
         _questionID = questionID
-        _isAccepted = isAccepted.toBool()!
+        _isAccepted = isAccepted.toBoolean()!
         _score = score
         _creationDate = NSDate(timeIntervalSince1970: creationDateTimeInterval)
         _lastActivityDate = NSDate(timeIntervalSince1970: lastActivityDateTimeInterval)
